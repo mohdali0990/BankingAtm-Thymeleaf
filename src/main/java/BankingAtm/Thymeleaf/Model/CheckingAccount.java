@@ -8,30 +8,37 @@ public class CheckingAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="checking_id")
+    @Column(name = "checking_id")
     private Integer checkingId;
-    @Column(name="balance")
+    @Column(name = "balance")
     private Integer balance;
-    @Column(name="add_subtract_balance")
+    @Column(name = "add_subtract_balance")
     private Integer addOrMinusBalance;
-    @Column(name="new_balance")
+    @Column(name = "new_balance")
     private Integer newBalance;
-    @Column(name="customer_id")
+    @Column(name = "customer_id")
     private Integer customerId;
-    @Column(name="status")
+    @Column(name = "status")
     private String status;
-
 
     public CheckingAccount() {
     }
 
-    public String getStatus() { return status; }
+    public String getStatus() {
+        return status;
+    }
 
-    public void setStatus(String status) { this.status = status; }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-    public Integer getCustomerId() { return customerId; }
+    public Integer getCustomerId() {
+        return customerId;
+    }
 
-    public void setCustomerId(Integer customerId) { this.customerId = customerId; }
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
 
     public Integer getCheckingId() {
         return checkingId;
@@ -64,4 +71,5 @@ public class CheckingAccount {
     public void setNewBalance(Integer newBalance) {
         this.newBalance = newBalance;
     }
+
 }

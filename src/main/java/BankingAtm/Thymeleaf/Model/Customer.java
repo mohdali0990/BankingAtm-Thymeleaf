@@ -19,6 +19,10 @@ public class Customer {
     private String lastName;
     @Column(name="status")
     private String status;
+    @Column(name ="first_checking_amount")
+    private Integer firstCheckingAmount;
+    @Column(name ="firstime_saving_amount")
+    private Integer firstSavingAmount;
 
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -30,6 +34,22 @@ public class Customer {
     private List<CheckingAccount>checkingAccount;
 
     public Customer() {
+    }
+
+    public Integer getFirstCheckingAmount() {
+        return firstCheckingAmount;
+    }
+
+    public void setFirstCheckingAmount(Integer firstCheckingAmount) {
+        this.firstCheckingAmount = firstCheckingAmount;
+    }
+
+    public Integer getFirstSavingAmount() {
+        return firstSavingAmount;
+    }
+
+    public void setFirstSavingAmount(Integer firstSavingAmount) {
+        this.firstSavingAmount = firstSavingAmount;
     }
 
     public String getStatus() {
