@@ -31,7 +31,7 @@ public class CustomerService {
         //orElseThrow(() -> new ApiRequestException("Id does not exist. Please try again."));
     }
 
-    public String newSavingAccount(String firstName, String lastname, Integer addingBalance) {
+    public Customer newSavingAccount(String firstName, String lastName, Integer addingBalance) {
 
         SavingAccount savingAccount = new SavingAccount();
         savingAccount.setBalance(addingBalance);
@@ -41,14 +41,13 @@ public class CustomerService {
 
         Customer customer = new Customer();
         customer.setFirstName(firstName);
-        customer.setLastName(lastname);
+        customer.setLastName(lastName);
+        customer.setFirstSavingAmount(addingBalance);
         customer.setStatus("active");
 
         customer.setSavingAccount(Arrays.asList(savingAccount));
 
-        customerRepo.save(customer);
-
-        return "Account Created";
+        return customerRepo.save(customer);
     }
 
     public Customer newCheckingAccount(String firstName, String lastname, Integer addingBalance) {
@@ -67,9 +66,9 @@ public class CustomerService {
 
         customer.setCheckingAccount(Arrays.asList(checkingAccount));
 
-        customerRepo.save(customer);
+        return customerRepo.save(customer);
 
-        return customerRepo.findByFirstNameAndLastName(firstName,lastname).get();
+        //customerRepo.findByFirstNameAndLastName(firstName,lastname).get();
     }
 
     public String newCheckingNSavingAccount(String firstName, String lastname, Integer addingBalanceChecking, Integer addingBalanceSaving) {

@@ -23,26 +23,40 @@ public class CustomerController {
     }
 
     @GetMapping("/showNewCustomerForm")
-    public String newCustomerForm(Model model){
-//        Customer customer = new Customer();
-//        model.addAttribute("customer",customer);
+    public String newCustomerForm(){
         return "new_customer";
     }
 
     @GetMapping("/newcheckingaccount")
     public String newCheckingAccount(Model model){
-        Customer customer = new Customer();
-        model.addAttribute("customer",customer);
+        Customer customer= new Customer();
+        model.addAttribute("customer", customer);
         return "new_checking_account";
     }
 
+    @GetMapping("/newsavingaccount")
+    public String newSavingAccount(Model model){
+        Customer customer = new Customer();
+        model.addAttribute("customer",customer);
+        return "new_saving_account";
+    }
+
     @PostMapping("/createcheckingaccount")
-    public String newCheckingAccount(String firstName, String lastName, Integer firstCheckingAmount, Model model, SessionStatus status){
+    public String createCheckingAccount(String firstName, String lastName, Integer firstCheckingAmount, Model model, SessionStatus status){
         Customer customer = customerService.newCheckingAccount(firstName, lastName, firstCheckingAmount);
                 model.addAttribute("customer",customer );
 
                 status.setComplete();
 
                 return "success";
+    }
+    @PostMapping("/createsavingaccount")
+    public String createSavingAccount(String firstName, String lastName, Integer firstCheckingAmount, Model model, SessionStatus status){
+        Customer customer = customerService.newSavingAccount(firstName, lastName, firstCheckingAmount);
+        model.addAttribute("customer",customer );
+
+        status.setComplete();
+
+        return "success";
     }
 }
