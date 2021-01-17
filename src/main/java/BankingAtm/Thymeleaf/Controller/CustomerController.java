@@ -9,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
-import javax.validation.constraints.NotEmpty;
-
 @Controller
 public class CustomerController {
 
