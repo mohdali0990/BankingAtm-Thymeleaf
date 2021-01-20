@@ -71,7 +71,7 @@ public class CustomerService {
         //customerRepo.findByFirstNameAndLastName(firstName,lastname).get();
     }
 
-    public String newCheckingNSavingAccount(String firstName, String lastname, Integer addingBalanceChecking, Integer addingBalanceSaving) {
+    public Customer newCheckingNSavingAccount(String firstName, String lastname, Integer addingBalanceChecking, Integer addingBalanceSaving) {
 
         CheckingAccount checkingAccount = new CheckingAccount();
         checkingAccount.setBalance(addingBalanceChecking);
@@ -89,15 +89,16 @@ public class CustomerService {
         Customer customer = new Customer();
         customer.setFirstName(firstName);
         customer.setLastName(lastname);
+        customer.setFirstSavingAmount(addingBalanceSaving);
+        customer.setFirstCheckingAmount(addingBalanceChecking);
         customer.setStatus("active");
 
         customer.setCheckingAccount(Arrays.asList(checkingAccount));
         customer.setSavingAccount(Arrays.asList(savingAccount));
 
 
-        customerRepo.save(customer);
+       return customerRepo.save(customer);
 
-        return "Accounts Created";
     }
 
     public String closeAccount(Integer id) {

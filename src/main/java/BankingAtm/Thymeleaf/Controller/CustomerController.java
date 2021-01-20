@@ -38,6 +38,18 @@ public class CustomerController {
         model.addAttribute("customer",customer);
         return "new_saving_account";
     }
+    @GetMapping("/newcheckingandsaving")
+    public String newSavingNCheckingAccount(Model model){
+        Customer customer = new Customer();
+        model.addAttribute("customer",customer);
+        return "new_checking_N_saving";
+    }
+    @GetMapping("/accessform")
+    public String accountAccess(Model model){
+        Customer customer = new Customer();
+        model.addAttribute("customer",customer);
+        return "access_account";
+    }
 
     @PostMapping("/createcheckingaccount")
     public String createCheckingAccount(String firstName, String lastName, Integer firstCheckingAmount, Model model, SessionStatus status){
@@ -52,6 +64,15 @@ public class CustomerController {
     public String createSavingAccount(String firstName, String lastName, Integer firstCheckingAmount, Model model, SessionStatus status){
         Customer customer = customerService.newSavingAccount(firstName, lastName, firstCheckingAmount);
         model.addAttribute("customer",customer );
+
+        status.setComplete();
+
+        return "success";
+    }
+    @PostMapping("/createcheckingNsaving")
+    public String createSavingAccount(String firstName, String lastName, Integer firstCheckingAmount,Integer firstSavingAmount,Model model, SessionStatus status) {
+        Customer customer = customerService.newCheckingNSavingAccount(firstName, lastName, firstCheckingAmount, firstSavingAmount);
+        model.addAttribute("customer", customer);
 
         status.setComplete();
 
