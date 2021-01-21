@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <titl></titl></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container 2">
+    <h1>Find Checking Account</h1>
+    <hr>
+    <form action = "#" th:action="@{/findcheckingaccount{id}}" th:object="${checkingAccount}"  method="Get">
+
+        <input type="number" th:field="*{checkingId}" placeholder="Enter Account Id" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Find </button>
+
+    </form>
+
+</div>
+<div class="container my-2">
+    <h1>Your Checking Account</h1>
+
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Balance</th>
+            <th>Adding Amount</th>
+            <th>New Balance</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="checkingAccount : ${checkingAccount}">
+            <td><input type="text" th:value="${checkingAccount.balance}"></td>
+            <td><input type="text" th:value="${checkingAccount.addOrMinusBalance}"></td>
+            <td><input type="text" th:value="${checkingAccount.newBalance}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

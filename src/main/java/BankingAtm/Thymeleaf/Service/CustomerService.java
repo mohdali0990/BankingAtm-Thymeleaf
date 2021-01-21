@@ -101,30 +101,30 @@ public class CustomerService {
 
     }
 
-    public String closeAccount(Integer id) {
-
-        Customer customer = customerRepo.findById(id).get();
-        //orElseThrow(() -> new ApiRequestException("Customer does not exist. Please try again."));
-        customer.setStatus("inactive");
-
-        CheckingAccount checkingAccount = checkingAccountRepo.findByCustomerId(id).get();
-        checkingAccount.setBalance(null);
-        checkingAccount.setAddOrMinusBalance(null);
-        checkingAccount.setNewBalance(null);
-        checkingAccount.setStatus("inactive");
-
-        SavingAccount savingAccount = savingAccountRepo.findByCustomerId(id).get();
-        savingAccount.setBalance(0);
-        savingAccount.setAddorMinusBalance(0);
-        savingAccount.setNewBalance(0);
-        savingAccount.setStatus("inactive");
-
-        customerRepo.save(customer);
-        checkingAccountRepo.save(checkingAccount);
-        savingAccountRepo.save(savingAccount);
-
-        return "Accounts Closed";
-    }
+//    public String closeAccount(Integer id) {
+//
+//        Customer customer = customerRepo.findById(id).get();
+//        //orElseThrow(() -> new ApiRequestException("Customer does not exist. Please try again."));
+//        customer.setStatus("inactive");
+//
+//        CheckingAccount checkingAccount = checkingAccountRepo.findByCustomerId(id).get();
+//        checkingAccount.setBalance(null);
+//        checkingAccount.setAddOrMinusBalance(null);
+//        checkingAccount.setNewBalance(null);
+//        checkingAccount.setStatus("inactive");
+//
+//        SavingAccount savingAccount = savingAccountRepo.findByCustomerId(id).get();
+//        savingAccount.setBalance(0);
+//        savingAccount.setAddorMinusBalance(0);
+//        savingAccount.setNewBalance(0);
+//        savingAccount.setStatus("inactive");
+//
+//        customerRepo.save(customer);
+//        checkingAccountRepo.save(checkingAccount);
+//        savingAccountRepo.save(savingAccount);
+//
+//        return "Accounts Closed";
+//    }
 
     public Customer findByFullName(String firstName,String lastName){
         return customerRepo.findByFirstNameAndLastName(firstName,lastName).get();
