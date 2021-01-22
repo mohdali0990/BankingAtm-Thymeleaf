@@ -18,9 +18,10 @@ public class CheckingService {
         return checkingAccountRepo.findAll();
     }
 
-    public List < CheckingAccount>getAccount(Integer id){
-        return checkingAccountRepo.findByCustomerId(id);
+    public CheckingAccount getAccount(Integer id){
+        CheckingAccount checkingAccount= checkingAccountRepo.findById(id).get();
         //orElseThrow(() -> new ApiRequestException("Account does not exist. Please try again."));
+    return checkingAccount;
     }
 
     public CheckingAccount withdrawal(Integer minusBalance,Integer id){

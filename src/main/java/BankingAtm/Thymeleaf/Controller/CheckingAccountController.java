@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -20,22 +21,22 @@ public class CheckingAccountController {
     private CheckingService checkingService;
 
     @GetMapping("/accesschecking")
-    public String accessAccount(Model model){
-    CheckingAccount checkingAccount = new CheckingAccount();
-    model.addAttribute("checkingaccount", checkingAccount);
-    return "checking_account_action";
-}
+    public String accessAccount(Model model) {
+        CheckingAccount checkingAccount = new CheckingAccount();
+        model.addAttribute("checkingaccount", checkingAccount);
+        return "checking_account_action";
+    }
 
-@GetMapping("/withdrawal")
-public String withdrawal(Model model){
-        CheckingAccount checkingAccount= new CheckingAccount();
+    @GetMapping("/withdrawal")
+    public String withdrawal(Model model) {
+        CheckingAccount checkingAccount = new CheckingAccount();
         model.addAttribute("checkingAccount", checkingAccount);
         return "find_checking_account";
-}
+    }
 
-    @GetMapping("/findcheckingaccount{id}")
-    public String getAccount( Integer id, Model model){
-      List<CheckingAccount> checkingAccount = checkingService.getAccount(id);
+    @GetMapping("/findcheckingaccount/{id}")
+    public String getAccount(@PathVariable("id") Integer checkingId, Model model) {
+        CheckingAccount checkingAccount = checkingService.getAccount(checkingId);
         model.addAttribute("checkingAccount", checkingAccount);
         return "Found_checking_account";
     }
