@@ -22,22 +22,16 @@ public class CheckingAccountController {
     @Autowired
     private CheckingService checkingService;
 
-    @GetMapping("/accesschecking")
-    public String accessAccount(Model model) {
-        CheckingAccount checkingAccount = new CheckingAccount();
-        model.addAttribute("checkingaccount", checkingAccount);
-        return "checking_account_action";
-    }
 
-    @GetMapping("/withdrawal")
+    @GetMapping("/accesschecking")
     public String withdrawal(Model model) {
         CheckingAccount checkingAccount = new CheckingAccount();
         model.addAttribute("checkingAccount", checkingAccount);
         return "find_checking_account";
     }
 
-    @GetMapping("/findcheckingaccount/{id}")
-    public String getAccount(@PathVariable("id") Integer checkingId, Model model) {
+    @GetMapping("/findcheckingaccount")
+    public String getAccount(@RequestParam(value = "checkingId") Integer checkingId, Model model) {
         CheckingAccount checkingAccount = checkingService.getAccount(checkingId);
         model.addAttribute("checkingAccount", checkingAccount);
         return "Found_checking_account";

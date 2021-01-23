@@ -10,12 +10,12 @@
 <div class="container 2">
     <h1>Find Checking Account</h1>
     <hr>
-    <form action = "#" th:action="@{/findcheckingaccount/{id}(id=${checkingId})}" method="get">
+    <form action = "#" th:action="@{/findcheckingaccount}" method="get">
 
         <div>
         <a th:if{checkingAccount}>
 
-        <input type="number" th:field="*{checkingAccount.checkingId}" placeholder="Enter Account Id" class="form-control mb-4 col-4">
+        <input type="number"  th:name="checkingId" placeholder="Enter Account Id" class="form-control mb-4 col-4">
 
         <button type="submit" class="btn btn-info col-2"> Find </button>
         </a>
