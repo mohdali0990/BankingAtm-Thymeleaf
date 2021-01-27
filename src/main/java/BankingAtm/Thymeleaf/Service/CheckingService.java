@@ -24,13 +24,13 @@ public class CheckingService {
     return checkingAccount;
     }
 
-    public CheckingAccount withdrawal(Integer minusBalance,Integer id){
+    public CheckingAccount withdrawal(Integer id,Integer minusBalance){
 
         CheckingAccount checkingAccount=checkingAccountRepo.findById(id).get();
-        int balance = checkingAccount.getBalance();
+        int balance = checkingAccount.getNewBalance();
         int newBalance = balance - minusBalance;
-        checkingAccount.setAddOrMinusBalance(minusBalance);
         checkingAccount.setBalance(balance);
+        checkingAccount.setAddOrMinusBalance(minusBalance);
         checkingAccount.setNewBalance(newBalance);
         checkingAccountRepo.save(checkingAccount);
 
@@ -38,10 +38,10 @@ public class CheckingService {
         //orElseThrow(() -> new ApiRequestException("Account does not exist. Please try again."));
     }
 
-    public CheckingAccount deposit(Integer addBalance,Integer id){
+    public CheckingAccount deposit(Integer id,Integer addBalance){
 
         CheckingAccount checkingAccount=checkingAccountRepo.findById(id).get();
-        int balance = checkingAccount.getBalance();
+        int balance = checkingAccount.getNewBalance();
         int newBalance = balance + addBalance;
         checkingAccount.setAddOrMinusBalance(addBalance);
         checkingAccount.setBalance(balance);

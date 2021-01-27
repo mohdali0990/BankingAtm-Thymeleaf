@@ -10,19 +10,18 @@
 <h2>Checking Account Withdrawal</h2>
 <hr>
 
-<form action = "#" th:action="@{/checkingwithdrawal}" method="Put">
+<form action = "#" th:action="@{/checkingwithdrawal}" th:object="${checkingAccount}"  method="POST">
 
     <div>
-        <a th:if{checkingAccount}>
 
-            <input type="number"  th:name="checkingId" placeholder="Enter Account Id" class="form-control mb-4 col-4">
-            <input type="number"  th:name="addOrMinusBalance" placeholder="Amount to Withdraw" class="form-control mb-4 col-4">
+        <input type="number"  th:name="checkingId" placeholder="Enter Account Id" class="form-control mb-4 col-4">
+        <input type="number"  th:name="addOrMinusBalance" placeholder="Amount to Withdraw" class="form-control mb-4 col-4">
+
 
             <button type="submit" class="btn btn-info col-2"> Withdraw </button>
-        </a>
+
     </div>
-</form>
-</div>
+
 </form>
 </body>
 </html>

@@ -17,7 +17,8 @@ public class SavingAccountService {
     }
 
     public SavingAccount getAccount(Integer findById){
-        return savingAccountRepo.findById(findById).get();
+        SavingAccount savingAccount = savingAccountRepo.findById(findById).get();
+        return  savingAccount;
     }
 
     public SavingAccount withdrawal(Integer id ,Integer minusBalance){
@@ -34,7 +35,7 @@ public class SavingAccountService {
         return savingAccountRepo.findById(id).get();
     }
 
-    public SavingAccount deposit(Integer addBalance, Integer id){
+    public SavingAccount deposit(Integer id,Integer addBalance){
 
         SavingAccount savingAccount=savingAccountRepo.findById(id).get();
         int balance = savingAccount.getBalance();
