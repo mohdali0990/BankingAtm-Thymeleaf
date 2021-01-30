@@ -5,11 +5,14 @@ import BankingAtm.Thymeleaf.Service.CheckingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Controller
+@Validated
 public class CheckingAccountController {
 
     @Autowired
@@ -51,7 +54,7 @@ public class CheckingAccountController {
     }
 
     @PostMapping(value = "/checkingdeposit")
-    public String deposit(@RequestParam("checkingId") Integer checkingId, @RequestParam("addOrMinusBalance") @NotEmpty Integer addOrMinusBalance, Model model) {
+    public String deposit(@RequestParam("checkingId") Integer checkingId, @RequestParam("addOrMinusBalance") @NotNull Integer addOrMinusBalance, Model model) {
         CheckingAccount checkingAccount = checkingService.deposit(checkingId, addOrMinusBalance);
         model.addAttribute("checkingAccount", checkingAccount);
         return "Found_checking_account";
