@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Controller
