@@ -1,6 +1,5 @@
 package BankingAtm.Thymeleaf.Controller;
 
-import BankingAtm.Thymeleaf.Model.CheckingAccount;
 import BankingAtm.Thymeleaf.Model.SavingAccount;
 import BankingAtm.Thymeleaf.Service.SavingAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
