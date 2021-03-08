@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 @Controller
@@ -52,7 +54,7 @@ public class CheckingAccountController {
     }
 
     @PostMapping(value = "/checkingdeposit")
-    public String deposit(@RequestParam("checkingId") Integer checkingId, @RequestParam("addOrMinusBalance") @NotEmpty Integer addOrMinusBalance, Model model) {
+    public String deposit(@RequestParam("checkingId") Integer checkingId, @RequestParam("addOrMinusBalance") @Min(1) Integer addOrMinusBalance, Model model) {
         CheckingAccount checkingAccount = checkingService.deposit(checkingId, addOrMinusBalance);
         model.addAttribute("checkingAccount", checkingAccount);
         return "Found_checking_account";
