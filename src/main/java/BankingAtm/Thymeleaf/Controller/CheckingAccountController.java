@@ -9,7 +9,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 
 @Controller
 @Validated
@@ -47,10 +46,17 @@ public class CheckingAccountController {
     }
 
     @GetMapping("/checkingdepositbutton")
-    public String dipositbutton(Model model) {
+    public String depositbutton(Model model) {
         CheckingAccount checkingAccount = new CheckingAccount();
         model.addAttribute("checkingAccount", checkingAccount);
         return "deposit_checkingaccount";
+    }
+
+    @GetMapping("/closecheckingdepositbutton")
+    public String closeCheckingAccount(@RequestParam("checkingId") Integer checkingId, Model model) {
+        CheckingAccount checkingAccount = checkingService.closeAccount(checkingId);
+        model.addAttribute("checkingAccount", checkingAccount);
+        return "find_checking_account";
     }
 
     @PostMapping(value = "/checkingdeposit")

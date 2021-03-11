@@ -52,7 +52,7 @@ public class CheckingService {
                 //orElseThrow(() -> new ApiRequestException("Account does not exist. Please try again."));
     }
 
-    public String closeAccount(Integer id){
+    public CheckingAccount closeAccount(Integer id){
         CheckingAccount checkingAccount = checkingAccountRepo.findById(id).get();
         //orElseThrow(()-> new ApiRequestException("Account does not exist. Please try again."));
         checkingAccount.setAddOrMinusBalance(null);
@@ -62,7 +62,7 @@ public class CheckingService {
         checkingAccount.setStatus("inactive");
         checkingAccountRepo.save(checkingAccount);
 
-        return "account closed";
+        return checkingAccount;
     }
 
 

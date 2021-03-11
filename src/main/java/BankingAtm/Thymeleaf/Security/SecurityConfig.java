@@ -9,18 +9,20 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+//
+//            authenticationManagerBuilder
+//                    .inMemoryAuthentication()
+//                    .withUser("bob")
+//                    .password("john")
+//                    .authorities("ROLE_USER")
+//                    .and()
+//                    .withUser("steve")
+//                    .password("harvey")
+//                    .authorities("admin");
+//        }
+//    }
 
-            authenticationManagerBuilder
-                    .inMemoryAuthentication()
-                    .withUser("bob")
-                    .password("john")
-                    .authorities("ROLE_USER")
-                    .and()
-                    .withUser("steve")
-                    .password("harvey")
-                    .authorities("admin");
-        }
-    }
 
+}
