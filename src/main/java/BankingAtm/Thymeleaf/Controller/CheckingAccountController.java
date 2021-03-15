@@ -51,18 +51,22 @@ public class CheckingAccountController {
         model.addAttribute("checkingAccount", checkingAccount);
         return "deposit_checkingaccount";
     }
-
-    @GetMapping("/closecheckingdepositbutton")
-    public String closeCheckingAccount(@RequestParam("checkingId") Integer checkingId, Model model) {
-        CheckingAccount checkingAccount = checkingService.closeAccount(checkingId);
-        model.addAttribute("checkingAccount", checkingAccount);
-        return "find_checking_account";
-    }
-
     @PostMapping(value = "/checkingdeposit")
     public String deposit(@RequestParam("checkingId") Integer checkingId, @RequestParam("addOrMinusBalance") @Min(1) Integer addOrMinusBalance, Model model) {
         CheckingAccount checkingAccount = checkingService.deposit(checkingId, addOrMinusBalance);
         model.addAttribute("checkingAccount", checkingAccount);
         return "Found_checking_account";
+    }
+    @GetMapping("/closecheckingaccountbutton")
+    public String closeCheckingAccount(Model model) {
+        CheckingAccount checkingAccount = new CheckingAccount();
+        model.addAttribute("checkingAccount", checkingAccount);
+        return "find_checking_account_to_close";
+    }
+    @GetMapping("/findcheckingaccounttoclose")
+    public String closeAccountInput(@RequestParam("accountId") Integer checkingId, Model model) {
+        CheckingAccount checkingAccount = checkingService.closeAccount(checkingId);
+        model.addAttribute("checkingAccount", checkingAccount);
+        return "closeAccount";
     }
 }

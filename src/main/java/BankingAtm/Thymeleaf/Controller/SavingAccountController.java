@@ -1,5 +1,6 @@
 package BankingAtm.Thymeleaf.Controller;
 
+import BankingAtm.Thymeleaf.Model.CheckingAccount;
 import BankingAtm.Thymeleaf.Model.SavingAccount;
 import BankingAtm.Thymeleaf.Service.SavingAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,17 @@ public class SavingAccountController {
         SavingAccount savingAccount= savingAccountService.deposit(checkingId, addOrMinusBalance);
         model.addAttribute("savingAccount", savingAccount);
         return "found_saving_account";
+    }
+    @GetMapping("/closesavingaccountbutton")
+    public String closeSavingAccount(Model model) {
+        SavingAccount savingAccount = new SavingAccount();
+        model.addAttribute("savingAccount", savingAccount);
+        return "find_saving_account_to_close";
+    }
+    @GetMapping("/findsavingaccounttoclose")
+    public String closeSavingInput(@RequestParam("accountId") Integer savingId, Model model) {
+        SavingAccount savingAccount = savingAccountService.closeAccount(savingId);
+        model.addAttribute("savingAccount", savingAccount);
+        return "closeAccount";
     }
 }

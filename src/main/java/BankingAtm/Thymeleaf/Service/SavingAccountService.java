@@ -48,7 +48,7 @@ public class SavingAccountService {
         return savingAccountRepo.findById(id).get();
     }
 
-    public String closeAccount(Integer id){
+    public SavingAccount closeAccount(Integer id){
         SavingAccount savingAccount = savingAccountRepo.findById(id).get();
         savingAccount.setAddOrMinusBalance(null);
         savingAccount.setAddOrMinusBalance(null);
@@ -56,6 +56,6 @@ public class SavingAccountService {
         savingAccount.setBalance(null);
         savingAccount.setStatus("inactive");
         savingAccountRepo.save(savingAccount);
-        return "Account Closed";
+        return savingAccount;
     }
 }
