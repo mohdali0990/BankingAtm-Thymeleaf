@@ -52,7 +52,7 @@ public class CheckingAccountController {
         return "deposit_checkingaccount";
     }
     @PostMapping(value = "/checkingdeposit")
-    public String deposit(@RequestParam("checkingId") Integer checkingId, @RequestParam("addOrMinusBalance") @Min(0) Integer addOrMinusBalance, Model model) {
+    public String deposit(@RequestParam("checkingId") Integer checkingId, @RequestParam("addOrMinusBalance") @Min(2) Integer addOrMinusBalance, Model model) {
         CheckingAccount checkingAccount = checkingService.deposit(checkingId, addOrMinusBalance);
         model.addAttribute("checkingAccount", checkingAccount);
         return "Found_checking_account";
